@@ -10,7 +10,6 @@ module.exports = {
 
     // Optionally, create indexes for better query performance (e.g., an index on the 'title' field)
     await db.collection('posts').createIndex({ title: 1 });
-    console.log('Posts collection created and index added!');
   },
 
   /**
@@ -21,6 +20,5 @@ module.exports = {
   async down(db, client) {
     // Drop the 'posts' collection in case of rollback
     await db.collection('posts').drop();
-    console.log('Posts collection dropped!');
   }
 };

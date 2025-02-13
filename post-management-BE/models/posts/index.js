@@ -10,7 +10,7 @@ const postSchema = new mongoose.Schema({
       required: true,
    },
    thumbnail: {
-      type: String,
+      type: Object,
       required: true,
    },
    author: {

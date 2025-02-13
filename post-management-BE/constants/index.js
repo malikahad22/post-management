@@ -1,14 +1,14 @@
 const ROLE_PERMISSIONS = {
    superadmin: {
       posts: [],
-      users: ['read', 'write', 'update', 'delete', 'create_admin'],
+      users: ['read', 'write', 'update', 'delete'],
    },
    admin: {
       posts: [],
-      users: ['read', 'write', 'update', 'create_user'],
+      users: ['read', 'write', 'update'],
    },
    user: {
-      posts: ['read', 'write', 'update'],
+      posts: ['read', 'write', 'update', 'delete'],
       users: ['read'],
    },
 };

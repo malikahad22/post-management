@@ -27,7 +27,9 @@ class UserController {
    get_all_users = async (req, resp) => {
       try {
 
-         const response = await this.user.getAllUsers();
+         const { limit, offset,user } = req.query;
+
+         const response = await this.user.getAllUsers(limit,offset,user);
          if (response.length === 0) return resp.success(response, 'No Users exist', 200);
          resp.success(response, 'Users get successfully!', 200);
 
@@ -71,7 +73,6 @@ class UserController {
 
          const { id } = req.params;
          const response = await this.user.getUserWithPosts(id);
-         console.log('response', response);
          if (response.length === 0) return resp.error(null, 'No user exist', 400);
          resp.success(response, 'User get successfully', 200);
 

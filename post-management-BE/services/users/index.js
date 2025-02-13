@@ -14,9 +14,13 @@ class UserService {
       }
    }
 
-   async getAllUsers() {
+   async getAllUsers(limit, offset, user) {
       try {
-         return await User.find({}, { password: 0 });
+         const users = await User.find({ _id: { $ne: user } }, { password: 0 })
+            .skip(offset)
+            .limit(limit);
+         const total = await User.countDocuments();
+         return { users, total }
       } catch (error) {
          throw error;
       }

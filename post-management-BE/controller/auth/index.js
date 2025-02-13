@@ -21,7 +21,7 @@ class AuthController {
          const userObject = user.toObject();
          delete userObject.password;
 
-         const data = { user: userObject, toke: token };
+         const data = { user: userObject, token: token };
          resp.success(data, 'User login successfull', 200);
 
       } catch (error) {

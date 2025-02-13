@@ -22,13 +22,24 @@ class PostService {
    }
 
    // Get all posts (you can add pagination or filters as needed)
-   async getAllPosts() {
+   async getAllPosts(limit, offset, title) {
       try {
-         return await Post.find({});
+         const query = title
+            ? { title: { $regex: title, $options: "i" } } // Case-insensitive search in the title
+            : {}; // No filter if search is empty
+
+         const posts = await Post.find(query)
+            .skip(offset)
+            .limit(limit);
+
+         const total = await Post.countDocuments(query); // Count based on filtered results
+
+         return { posts, total };
       } catch (error) {
          throw error;
       }
    }
+
 
    // Update a post by its ID
    async updatePost(id, payload) {

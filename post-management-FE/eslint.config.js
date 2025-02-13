@@ -10,7 +10,7 @@ export default [
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: { ...globals.browser, process: 'readonly' }, // Add process here
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },

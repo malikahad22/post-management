@@ -11,7 +11,6 @@ const responseFormatter = (req, res, next) => {
    };
 
    res.error = (error, message = "An error occurred", statusCode = 500) => {
-      console.log("Error", error?.message);
       res.status(statusCode).json({
          statusCode,
          success: false,

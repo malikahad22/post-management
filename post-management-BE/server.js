@@ -18,6 +18,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(responseFormatter);
+app.use('/uploads', express.static('uploads'));
 
 app.use('/', userRoute);
 app.use('/', postRoute);

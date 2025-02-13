@@ -2,6 +2,8 @@
 const authMiddleware = require('../../middlewares/auth-middleware/index');
 const checkPermission = require('../../middlewares/check-permission/index');
 const { PostController } = require('../../controller/posts/index');
+const upload = require('../../middlewares/mutler');
+
 
 //--------------------- library imports //---------------------
 const express = require('express');
@@ -9,28 +11,30 @@ const postRoute = express.Router();
 
 
 
-postRoute.post('/create-post',
+
+postRoute.post('/post',
    authMiddleware,
    checkPermission('posts', 'write'),
+   upload.single('thumbnail'),
    PostController.create_post
 );
 
 
-postRoute.get('/get-post/:id',
+postRoute.get('/post/:id',
    authMiddleware,
    checkPermission('posts', 'read'),
    PostController.get_post_by_id
 );
 
 
-postRoute.get('/get-post',
+postRoute.get('/post',
    authMiddleware,
    checkPermission('posts', 'read'),
    PostController.get_all_posts
 );
 
 
-postRoute.delete('/delete-post/:id',
+postRoute.delete('/post/:id',
    authMiddleware,
    checkPermission('posts', 'delete'),
    PostController.delete_post
