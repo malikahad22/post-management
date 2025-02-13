@@ -1,15 +1,18 @@
-import useApi from "../../hooks/useApi";
-import { postsRoute } from "../../routes/api-routes";
-import Loading from '../../components/loader/Page';
+// ------------------------ libraries imports ------------------------
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-
-import CreatePostModal from "../../components/create-post-modal/Page";
 import { useSelector } from "react-redux";
-import { BASE_URL } from "../../constant/constant";
-import { useNavigate } from "react-router-dom";
+
+// ------------------------ app imports ------------------------
+import CreatePostModal from "../../components/create-post-modal/Page";
 import { postDetailRoute } from "../../routes/app-routes";
 import useDebounce from "../../hooks/useApi/useDebounce";
+import { postsRoute } from "../../routes/api-routes";
+import { BASE_URL } from "../../constant/constant";
+import Loading from '../../components/loader/Page';
+import useApi from "../../hooks/useApi";
+
 const Page = () => {
 
    const { loading, request } = useApi();

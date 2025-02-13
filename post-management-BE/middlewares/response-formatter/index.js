@@ -1,3 +1,11 @@
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * 
+ * This middleware is use to format the response for success and error
+ */
 const responseFormatter = (req, res, next) => {
 
    res.success = (data, message = "Success", statusCode = 200) => {

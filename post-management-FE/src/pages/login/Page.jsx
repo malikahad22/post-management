@@ -17,8 +17,9 @@ const Page = () => {
 
    const { loading, request } = useApi();
    const dispatch = useDispatch();
-   const user = useSelector((state) => state.user);
    const navigate = useNavigate();
+   
+   const user = useSelector((state) => state.user);
 
    useEffect(() => {
       if (user.isloggedIn) {
@@ -31,6 +32,7 @@ const Page = () => {
          email: "",
          password: "",
       },
+
       validationSchema: Yup.object({
          email: Yup.string().email("Invalid email").required("Email is required"),
          password: Yup.string()
@@ -43,7 +45,6 @@ const Page = () => {
       }),
 
       onSubmit: async (values) => {
-
          const response = await request(LOGIN, "POST", values);
          const { data } = response;
          dispatch(login(data));

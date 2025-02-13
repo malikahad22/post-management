@@ -1,7 +1,9 @@
+// ------------------------ libraries imports ------------------------
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 
+// ------------------------ app imports ------------------------
 import userSlice from '../slices/authSlice';
 
 const persistConfig = {

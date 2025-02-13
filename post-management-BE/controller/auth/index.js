@@ -5,6 +5,14 @@ class AuthController {
       this.user = new UserService();
    }
 
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    * It will check user ,is user exist.
+    * Then compare hashed password with passed password
+    */
    login = async (req, resp) => {
 
       try {

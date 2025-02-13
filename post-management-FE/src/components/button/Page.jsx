@@ -1,6 +1,7 @@
 
 import PropTypes from "prop-types";
 
+
 const Page = ({ text = '', classes = '', type = '', disabled, isLoading }) => {
    return (
       <div>

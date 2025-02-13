@@ -1,5 +1,12 @@
 const UserService = require('../../services/users/index');
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} resp 
+ * @param {*} next 
+ * middleware to check the user existance
+ */
 const checUserExistance = async (req, resp, next) => {
    const user = new UserService();
    try {

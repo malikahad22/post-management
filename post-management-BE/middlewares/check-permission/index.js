@@ -1,5 +1,12 @@
 const ROLE_PERMISSION = require('../../constants/index');
 
+/**
+ * 
+ * @param {*} resource 
+ * @param {*} action 
+ * @returns 
+ * This middleware check either user has permission to perfrom this operation
+ */
 const checkPermission = (resource, action) => {
 
    return (req, res, next) => {

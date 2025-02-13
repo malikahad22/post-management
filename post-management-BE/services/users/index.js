@@ -5,6 +5,11 @@ const User = require('../../models/users/index');
 class UserService {
    constructor() { }
 
+   /**
+    * 
+    * @param {*} payload 
+    * @returns 
+    */
    async createUser(payload) {
       try {
          return await User.insertOne(payload);
@@ -14,6 +19,13 @@ class UserService {
       }
    }
 
+   /**
+    * 
+    * @param {*} limit 
+    * @param {*} offset 
+    * @param {*} user 
+    * @returns 
+    */
    async getAllUsers(limit, offset, user) {
       try {
          const users = await User.find({ _id: { $ne: user } }, { password: 0 })
@@ -26,6 +38,12 @@ class UserService {
       }
    }
 
+
+   /**
+    * 
+    * @param {*} email 
+    * @returns 
+    */
    async getUserByEmail(email) {
       try {
          return User.findOne({ email: email });
@@ -34,6 +52,12 @@ class UserService {
       }
    }
 
+
+   /**
+    * 
+    * @param {*} id 
+    * @returns 
+    */
    async getUserById(id) {
       try {
          return await User.findOne({ _id: id }, { password: 0 });
@@ -42,6 +66,12 @@ class UserService {
       }
    }
 
+
+   /**
+    * 
+    * @param {*} id 
+    * @returns 
+    */
    async deleteUser(id) {
       try {
          return await User.deleteOne({ _id: id });
@@ -50,6 +80,12 @@ class UserService {
       }
    }
 
+
+   /**
+    * 
+    * @param {*} id 
+    * @returns 
+    */
    async getUserWithPosts(id) {
       try {
          const data = await User.aggregate([

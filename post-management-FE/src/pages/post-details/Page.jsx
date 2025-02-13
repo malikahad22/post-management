@@ -1,11 +1,14 @@
 
+// ------------------------ libraries imports ------------------------
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { postsRoute } from "../../routes/api-routes";
 
-import useApi from "../../hooks/useApi";
-import Loading from '../../components/loader/Page';
+// ------------------------ app imports ------------------------
+import { postsRoute } from "../../routes/api-routes";
 import { BASE_URL } from "../../constant/constant";
+import Loading from '../../components/loader/Page';
+import useApi from "../../hooks/useApi";
+
 
 const PostDetails = () => {
 
@@ -17,8 +20,8 @@ const PostDetails = () => {
 
 
    useEffect(() => {
-      const fetchPost = async () => {
 
+      const fetchPost = async () => {
          const response = await request(`${postsRoute}/${id}`)
          if (response) {
             const { data } = response;
@@ -28,6 +31,7 @@ const PostDetails = () => {
          }
       };
       fetchPost();
+
    }, [id]);
 
    return (

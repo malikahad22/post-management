@@ -6,6 +6,13 @@ class UserController {
       this.user = new UserService();
    }
 
+
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * 
+    */
    create_user = async (req, resp) => {
       try {
 
@@ -24,12 +31,18 @@ class UserController {
       }
    }
 
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    */
    get_all_users = async (req, resp) => {
       try {
 
-         const { limit, offset,user } = req.query;
+         const { limit, offset, user } = req.query;
 
-         const response = await this.user.getAllUsers(limit,offset,user);
+         const response = await this.user.getAllUsers(limit, offset, user);
          if (response.length === 0) return resp.success(response, 'No Users exist', 200);
          resp.success(response, 'Users get successfully!', 200);
 
@@ -38,6 +51,13 @@ class UserController {
       }
    }
 
+
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    */
    get_user = async (req, resp) => {
       try {
 
@@ -52,6 +72,13 @@ class UserController {
       }
    }
 
+
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    */
    delete_user = async (req, resp) => {
       try {
          const { id } = req.params;
@@ -67,6 +94,13 @@ class UserController {
       }
    }
 
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    * It will return specific user with its posts
+    */
    get_user_with_posts = async (req, resp) => {
 
       try {

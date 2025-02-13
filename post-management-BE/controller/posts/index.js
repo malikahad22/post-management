@@ -6,6 +6,12 @@ class PostController {
       this.post = new PostService();
    }
 
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    */
    create_post = async (req, resp) => {
       try {
 
@@ -22,7 +28,13 @@ class PostController {
       }
    };
 
-   // Get a post by ID
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    * get post by Id
+    */
    get_post_by_id = async (req, resp) => {
       try {
          const { id } = req.params;
@@ -36,7 +48,14 @@ class PostController {
       }
    };
 
-   // Get all posts
+
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    * It will return queried posts with pagination
+    */
    get_all_posts = async (req, resp) => {
       try {
          const { limit, offset, title } = req.query;
@@ -49,22 +68,13 @@ class PostController {
       }
    };
 
-   // Update a post
-   update_post = async (req, resp) => {
-      try {
-         const { id } = req.params;
-         const payload = req.body;
 
-         const response = await this.post.updatePost(id, payload);
-         if (!response) return resp.error([], 'Post update failed', 400);
-
-         resp.success(response, 'Post updated successfully', 200);
-      } catch (error) {
-         resp.error(error, error.message, 500);
-      }
-   };
-
-   // Delete a post
+   /**
+    * 
+    * @param {*} req 
+    * @param {*} resp 
+    * @returns 
+    */
    delete_post = async (req, resp) => {
       try {
 

@@ -1,5 +1,13 @@
 const jwt = require('jsonwebtoken');
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ * Middleware to check the expiry of the token or user authorization
+ */
 const authMiddleware = (req, res, next) => {
    try {
 

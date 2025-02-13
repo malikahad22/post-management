@@ -30,7 +30,13 @@ const CreatePostModal = ({ isOpen, onClose, onSubmit }) => {
       },
    });
 
-   // File upload handler
+
+   /**
+    * 
+    * @param {*} event 
+    * @returns 
+    * This function will upload the file ofong,jpg and jpeg type 
+    */
    const handleFileChange = (event) => {
       const file = event.target.files[0];
 
@@ -48,6 +54,8 @@ const CreatePostModal = ({ isOpen, onClose, onSubmit }) => {
          reader.readAsDataURL(file);
       }
    };
+
+
    return (
       <div className={`fixed inset-0 flex items-center justify-center bg-black/40 bg-opacity-50 ${isOpen ? "block" : "hidden"} px-5`}>
          <div className="bg-white p-6 rounded-lg shadow-lg w-[400px]">

@@ -3,7 +3,11 @@ const Post = require('../../models/posts/index');
 class PostService {
    constructor() { }
 
-   // Create a new post
+   /**
+    * 
+    * @param {*} payload 
+    * @returns 
+    */
    async createPost(payload) {
       try {
          return await Post.insertOne(payload);
@@ -12,7 +16,11 @@ class PostService {
       }
    }
 
-   // Get a single post by its ID
+   /**
+    * 
+    * @param {*} id 
+    * @returns 
+    */
    async getPostById(id) {
       try {
          return await Post.findById(id);
@@ -21,7 +29,14 @@ class PostService {
       }
    }
 
-   // Get all posts (you can add pagination or filters as needed)
+   /**
+    * 
+    * @param {*} limit 
+    * @param {*} offset 
+    * @param {*} title 
+    * @returns 
+    *  Get all posts (you can add pagination or filters as needed)
+    */
    async getAllPosts(limit, offset, title) {
       try {
          const query = title
@@ -40,17 +55,11 @@ class PostService {
       }
    }
 
-
-   // Update a post by its ID
-   async updatePost(id, payload) {
-      try {
-         return await Post.findByIdAndUpdate(id, payload, { new: true });
-      } catch (error) {
-         throw error;
-      }
-   }
-
-   // Delete a post by its ID
+   /**
+    * 
+    * @param {*} id 
+    * @returns 
+    */
    async deletePost(id) {
       try {
          return await Post.deleteOne({ _id: id });

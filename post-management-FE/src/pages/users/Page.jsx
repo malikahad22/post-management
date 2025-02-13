@@ -1,13 +1,16 @@
+// ------------------------ libraries imports ------------------------
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useApi from "../../hooks/useApi";
+import { useSelector } from "react-redux";
+import { MdDelete } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
+
+// ------------------------ app imports ------------------------
+import CreateUserModal from '../../components/create-user-modal/Page';
+import { userDetailRoute } from "../../routes/app-routes/index";
 import { userRoute } from "../../routes/api-routes";
 import Loading from "../../components/loader/Page";
-import { useSelector } from "react-redux";
-import CreateUserModal from '../../components/create-user-modal/Page';
-import { useNavigate } from "react-router-dom";
-import { FaEye } from "react-icons/fa";
-import { userDetailRoute } from "../../routes/app-routes/index";
-import { MdDelete } from "react-icons/md";
+import useApi from "../../hooks/useApi";
 
 
 const Page = () => {

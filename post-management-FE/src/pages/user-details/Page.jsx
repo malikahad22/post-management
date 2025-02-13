@@ -1,11 +1,15 @@
+// ------------------------ libraries imports ------------------------
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom"
-import { userWithPostRoute } from "../../routes/api-routes";
+import { useSearchParams } from "react-router-dom";
 
-import Loading from "../../components/loader/Page";
+
+// ------------------------ app imports ------------------------
+import { userWithPostRoute } from "../../routes/api-routes";
 import PostListTable from "../../components/post-table/Page";
+import Loading from "../../components/loader/Page";
 import User from '../../assets/Avatar.png';
 import useApi from "../../hooks/useApi";
+
 
 const Page = () => {
 
@@ -19,6 +23,7 @@ const Page = () => {
       getUserWithPosts();
    }, []);
 
+
    const getUserWithPosts = async () => {
       const response = await request(`${userWithPostRoute}/${id}`, 'GET');
       const { data } = response;
@@ -31,6 +36,7 @@ const Page = () => {
             !user ? <Loading /> :
                (
                   <div className="max-w-4xl mx-auto p-6">
+
                      {/* User Details Section */}
                      <div className="flex my-10 justify-between">
                         <h1 className="text-3xl font-semibold ">User Details</h1>
@@ -56,6 +62,7 @@ const Page = () => {
                      ) : (
                         <div className="text-center mt-8 text-xl text-gray-600">No posts available for this user.</div>
                      )}
+
                   </div>
                )
          }
