@@ -9,8 +9,8 @@ const userSlice = createSlice({
 
       login(state, action) {
          state.isloggedIn = true,
-            state.userInfo = action.payload.data.user,
-            state.userToken = action.payload.data.token,
+            state.userInfo = action?.payload?.data?.user,
+            state.userToken = action?.payload?.data?.token,
             state.success = true
 
       },

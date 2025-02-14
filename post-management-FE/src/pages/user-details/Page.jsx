@@ -27,7 +27,7 @@ const Page = () => {
    const getUserWithPosts = async () => {
       const response = await request(`${userWithPostRoute}/${id}`, 'GET');
       const { data } = response;
-      setUser(data.data[0]);
+      setUser(data?.data[0]);
    }
 
    return (
@@ -47,9 +47,9 @@ const Page = () => {
                            <img className="h-66" src={User} alt="" />
                         </div>
                         <div className="py-10 space-y-2">
-                           <p className="text-xl md:text-2xl  font-bold"><span>Name:  </span>{user.name}</p>
-                           <p className="text-xl md:text-2xl  font-bold">Email: {user.email}</p>
-                           <p className="text-xl md:text-2xl font-bold">Role: {user.role}</p>
+                           <p className="text-xl md:text-2xl  font-bold"><span>Name:  </span>{user?.name || ''}</p>
+                           <p className="text-xl md:text-2xl  font-bold">Email: {user?.email || ''}</p>
+                           <p className="text-xl md:text-2xl font-bold">Role: {user?.role || ''}</p>
                         </div>
                      </div>
 
@@ -57,7 +57,7 @@ const Page = () => {
                      {user?.posts?.length ? (
                         <div>
                            <h2 className="text-3xl font-semibold my-10">Posts</h2>
-                           <PostListTable posts={user.posts} />
+                           <PostListTable posts={user?.posts || []} />
                         </div>
                      ) : (
                         <div className="text-center mt-8 text-xl text-gray-600">No posts available for this user.</div>

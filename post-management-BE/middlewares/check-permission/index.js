@@ -12,7 +12,7 @@ const checkPermission = (resource, action) => {
    return (req, res, next) => {
       const { role } = req.body;
       const user = req.user;
-      const userRole = user.role;
+      const userRole = user?.role;
 
       // If anyone try to create superadmin from postman or anyother way then , he will not able to create super admin
       if ((userRole === 'admin' || userRole === 'user') && role === 'superadmin') {

@@ -30,7 +30,7 @@ const Page = () => {
    const user = useSelector(state => state.user);
    const { userInfo } = user;
 
-   const isSuperAdmin = userInfo.role === 'superadmin';
+   const isSuperAdmin = userInfo?.role === 'superadmin';
 
    useEffect(() => {
       fetchUsers();
@@ -54,8 +54,8 @@ const Page = () => {
       });
 
       const { data } = response;
-      setUsers(data.data.users);
-      setTotalUsers(data.data.total - 1);
+      setUsers(data?.data?.users || []);
+      setTotalUsers(data?.data?.total - 1 || 0);
    };
 
 
@@ -90,9 +90,9 @@ const Page = () => {
                                  {users.map((user) => (
 
                                     <tr key={user._id} className="hover">
-                                       <td className="p-2">{user.name}</td>
-                                       <td className="p-2">{user.email}</td>
-                                       <td className="p-2">{user.role}</td>
+                                       <td className="p-2">{user?.name || ''}</td>
+                                       <td className="p-2">{user?.email || ''}</td>
+                                       <td className="p-2">{user?.role || ''}</td>
                                        <td className="p-2">
                                           <button
                                              disabled={!isSuperAdmin}
@@ -101,7 +101,7 @@ const Page = () => {
                                              <MdDelete size={20} />
                                           </button>
                                           <button
-                                             onClick={() => navigate(`${userDetailRoute}?id=${user._id}`)}
+                                             onClick={() => navigate(`${userDetailRoute}?id=${user?._id}`)}
                                              className="btn btn-accent btn-sm ml-2 text-gray-600">
                                              <FaEye size={20} />
                                           </button>

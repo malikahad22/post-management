@@ -9,8 +9,8 @@ import Posts from '../post/Page';
 
 const Page = () => {
 
-   const user = useSelector((state) => state.user);
-   const isUser = user.userInfo.role === 'user';
+   const user = useSelector((state) => state?.user);
+   const isUser = user?.userInfo?.role === 'user';
 
    return (
       <>

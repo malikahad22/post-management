@@ -6,6 +6,7 @@ import { LOGIN } from '../../routes/api-routes';
 import { login } from '../../redux/slices/authSlice';
 import { homeRoute } from '../../routes/app-routes';
 
+
 // ------------------------ libraries imports ------------------------
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -22,7 +23,7 @@ const Page = () => {
    const user = useSelector((state) => state.user);
 
    useEffect(() => {
-      if (user.isloggedIn) {
+      if (user?.isloggedIn) {
          navigate(homeRoute);
       }
    }, []);

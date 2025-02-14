@@ -25,7 +25,7 @@ const PostDetails = () => {
          const response = await request(`${postsRoute}/${id}`)
          if (response) {
             const { data } = response;
-            setPost(data.data);
+            setPost(data?.data || []);
          } else {
             setPost({});
          }
@@ -40,7 +40,7 @@ const PostDetails = () => {
          {
             loading || !post ? <Loading /> :
                <div className="p-6 overflow-hidden">
-                  <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold  my-12">{post?.title}</h1>
+                  <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold  my-12">{post?.title || ''}</h1>
                   {post.thumbnail && (
                      <img
                         src={`${BASE_URL}${post?.thumbnail}`}
@@ -48,7 +48,7 @@ const PostDetails = () => {
                         className="w-full object-cover h-[500px] rounded-lg shadow-md mb-4"
                      />
                   )}
-                  <p className="text-lg text-gray-700 leading-relaxed mt-10 inline-bloc">{post?.content}</p>
+                  <p className="text-lg text-gray-700 leading-relaxed mt-10 inline-bloc">{post?.content || ''}</p>
                </div>
          }
       </>
